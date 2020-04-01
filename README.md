@@ -1,13 +1,8 @@
+# hackernews-async-ts
 
-# node-puppeteer-poster
-使用 puppeteer 来搭建海报渲染中台服务
-# app
+[Hacker News](https://news.ycombinator.com/) showcase using typescript && egg
 
 ## QuickStart
-
-<!-- add docs here for user -->
-
-see [egg docs][egg] for more detail.
 
 ### Development
 
@@ -17,15 +12,22 @@ $ npm run dev
 $ open http://localhost:7001/
 ```
 
+Don't tsc compile at development mode, if you had run `tsc` then you need to `npm run clean` before `npm run dev`.
+
 ### Deploy
 
 ```bash
+$ npm run tsc
 $ npm start
-$ npm stop
 ```
 
-### npm scripts
+### Npm Scripts
 
-- Use `npm run lint` to check code style.
-- Use `npm test` to run unit test.
-- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
+- Use `npm run lint` to check code style
+- Use `npm test` to run unit test
+- se `npm run clean` to clean compiled js at development mode once
+
+### Requirement
+
+- Node.js 8.x
+- Typescript 2.8+

@@ -4,15 +4,15 @@
  * @Author: falost
  * @Date: 2019-08-27 11:43:41
  * @LastEditors: falost
- * @LastEditTime: 2019-09-08 18:20:51
+ * @LastEditTime: 2020-04-01 17:25:49
  */
-const puppeteer = require('puppeteer')
-const { mkdirsSync, formatNumber } = require('../utils/utils')
+import { launch } from "puppeteer";
+import { mkdirsSync } from "../../utils/utils";
 
-class PuppenteerHelper {
+export default class PuppenteerHelper {
   async createImg(params) {
-    const browser = await puppeteer.launch({
-      headless: false, // 默认为 true 打开浏览器，设置 false 不打开
+    const browser = await launch({
+      headless: true, // 默认为 true 打开浏览器，设置 false 不打开
       // args: [
       //   '–disable-gpu',
       //   '–disable-dev-shm-usage',
@@ -23,9 +23,7 @@ class PuppenteerHelper {
       //   '–single-process'
       // ]
     })
-    const date = new Date()
-    const path = `static/upload/${date.getFullYear()}/${formatNumber(date.getMonth() + 1)}`
-    mkdirsSync(path)
+    mkdirsSync(params.path)
     const page = await browser.newPage()
     await page.setViewport({
       width: params.width,
@@ -36,7 +34,7 @@ class PuppenteerHelper {
     await this.waitForNetworkIdle(page, 50)
     let filePath
     if (params.fileType === 'path') {
-      filePath = `${path}/${params.htmlRedisKey}.${params.imageType}`
+      filePath = `${params.path}/${params.htmlRedisKey}.${params.imageType}`
       await page.screenshot({
         path: filePath,
         fullPage: false,
@@ -85,4 +83,3 @@ class PuppenteerHelper {
     }
   }
 }
-module.exports = new PuppenteerHelper()
