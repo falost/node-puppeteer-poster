@@ -1,6 +1,6 @@
-# hackernews-async-ts
+# Node-Puppeteer-Poster
 
-[Hacker News](https://news.ycombinator.com/) showcase using typescript && egg
+利用 node-puppeteer 渲染前端页面生成海报服务
 
 ## QuickStart
 
